@@ -44,3 +44,20 @@
   align-items: center;
   gap: 10px;
 }
+
+.DrawingBoardAndBrushSizes {
+  display: flex;
+}
+
+.Spacing {
+  width: 25vw;
+}
+
+.BrushCircles {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}

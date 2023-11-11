@@ -1,0 +1,28 @@
+.BrushCircle {
+    border-radius: 50%;
+    background-color: black;
+    transition: 0.1s ease;
+
+    &.small {
+        width: 15px;
+        height: 15px;
+    }
+
+    &.medium {
+        width: 25px;
+        height: 25px;
+    }
+
+    &.large {
+        width: 30px;
+        height: 30px;
+    }
+
+    &.selected {
+        background-color: gray;
+    }
+}
+
+.BrushCircle:hover {
+    background-color: gray;
+}

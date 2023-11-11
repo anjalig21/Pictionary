@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './DrawingBoard.css';
+import { allBrushSizes } from '../../constants/DrawingBoardConstants';
 
-const DrawingBoard = ({ width = 500, height = 500, brushColour }) => {
+const DrawingBoard = ({ width = 500, height = 500, brushColour, brushSize }) => {
     const canvasRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
 
@@ -27,6 +28,7 @@ const DrawingBoard = ({ width = 500, height = 500, brushColour }) => {
         const mousePos = getMousePos(canvas, e);
         const ctx = canvas.getContext('2d');
         ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.lineWidth = allBrushSizes[brushSize]
         ctx.strokeStyle = brushColour
         ctx.stroke();
     };
