@@ -1,37 +1,63 @@
-import React, { useState } from 'react'
-import Pixel from "./Pixel"
-import './DrawingBoard.css'
+import React, { useEffect, useRef, useState } from 'react';
+import './DrawingBoard.css';
 
-const DrawingBoard = ({row=100, col=100}) => {
-    const [isMouseDown, setIsMouseDown] = useState(false)
+const DrawingBoard = ({ width = 500, height = 500 }) => {
+    const canvasRef = useRef(null);
+    const [isDrawing, setIsDrawing] = useState(false);
 
-    const grid = []
+    const getMousePos = (canvas, evt) => {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top,
+        };
+    };
 
-    for (let i = 0; i < row; i++) {
-        const currArr = []
-        for (let j = 0; j < col; j++) {
-            currArr.push(`cell${i.toString() + j.toString()}`)
-        }
-        grid.push(currArr)
-    }
+    const startDrawing = (e) => {
+        const canvas = canvasRef.current;
+        const mousePos = getMousePos(canvas, e);
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.moveTo(mousePos.x, mousePos.y);
+    };
 
-    window.onmousedown = () => {
-        setIsMouseDown(true)
-    }
+    const draw = (e) => {
+        if (!isDrawing) return;
+        const canvas = canvasRef.current;
+        const mousePos = getMousePos(canvas, e);
+        const ctx = canvas.getContext('2d');
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+    };
 
-    window.onmouseup = () => {
-        setIsMouseDown(false)
-    }
+    const endDrawing = () => {
+        const ctx = canvasRef.current.getContext('2d');
+        ctx.closePath();
+    };
 
-  return (
-    <div>
-        {grid.map((row, i) => (
-            <div className="RowPixels" key={"row" + i.toString()}>
-                { row.map((cellId) => <Pixel key={cellId} isMouseDown={isMouseDown}/>) }
-            </div>
-        ))}
-    </div>
-  )
-}
+    useEffect(() => {
+        window.addEventListener("mousedown", () => {
+            setIsDrawing(true)
+        })
+        window.addEventListener("mouseup", () => {
+            setIsDrawing(false)
+        })
+    }, [])
 
-export default DrawingBoard
+    return (
+        <div>
+            <canvas
+                ref={canvasRef}
+                width={width}
+                height={height}
+                onMouseDown={startDrawing}
+                onMouseMove={draw}
+                onMouseUp={endDrawing}
+                onMouseOut={endDrawing}
+                onMouseEnter={startDrawing}
+            />
+        </div>
+    );
+};
+
+export default DrawingBoard;

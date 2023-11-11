@@ -4,7 +4,7 @@ import DrawingBoard from './components/drawingBoard/DrawingBoard';
 function App() {
   return (
     <div className="App">
-      <DrawingBoard></DrawingBoard>
+      <DrawingBoard width={600} height={400}/>
     </div>
   );
 }
