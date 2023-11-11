@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ColourSquare.css"
 
 const ColourSquare = ({colour, changeColour, brushColour}) => {

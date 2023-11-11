@@ -2,7 +2,7 @@ import './App.css';
 import {useState} from "react"
 import ColourSquare from './components/drawingBoard/ColourSquare';
 import DrawingBoard from './components/drawingBoard/DrawingBoard';
-import { colours, allBrushSizes } from './constants/DrawingBoardConstants';
+import { COLOURS, ALL_BRUSH_SIZES } from './constants/DrawingBoardConstants';
 import BrushCircle from './components/drawingBoard/BrushCircle';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <DrawingBoard width={600} height={400} brushColour={brushColour} brushSize={brushSize}/>
         </div>
         <div className='BrushCircles'>
-          {Object.keys(allBrushSizes).map((size) => {
+          {Object.keys(ALL_BRUSH_SIZES).map((size) => {
             return <BrushCircle size={size} currentBrushSize={brushSize} changeBrushSize={setBrushSize}/>
           })}
         </div>
@@ -26,7 +26,7 @@ function App() {
       
       <div className='ColourSquares'>
         {
-          colours.map((col) => {
+          COLOURS.map((col) => {
             return <ColourSquare colour={col} changeColour={changeBrushColour} brushColour={brushColour}/>
           })
         }

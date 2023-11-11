@@ -1,4 +1,4 @@
-export const colours = [    
+export const COLOURS = [    
     "#000000",
     "#4287f5",
     "#9042f5",
@@ -9,7 +9,7 @@ export const colours = [
     "#f58442"
 ]
 
-export const allBrushSizes = {
+export const ALL_BRUSH_SIZES = {
     "small": 2, 
     "medium": 5, 
     "large": 10
