@@ -1,3 +1,4 @@
-.RowPixels {
-    display: flex;
+.Canvas {
+    margin-top: 5%;
+    border: 2px solid #000000;
 }

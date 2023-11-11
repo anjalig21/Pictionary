@@ -1,0 +1,14 @@
+.ColourSquare {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    border: 5px solid #000000;
+
+    &.selected {
+        border-color: gray;
+    }
+}
+
+.ColourSquare:hover {
+    border-color: gray;
+}

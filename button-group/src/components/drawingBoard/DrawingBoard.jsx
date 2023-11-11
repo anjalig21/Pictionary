@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './DrawingBoard.css';
 
-const DrawingBoard = ({ width = 500, height = 500 }) => {
+const DrawingBoard = ({ width = 500, height = 500, brushColour }) => {
     const canvasRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
 
@@ -27,6 +27,7 @@ const DrawingBoard = ({ width = 500, height = 500 }) => {
         const mousePos = getMousePos(canvas, e);
         const ctx = canvas.getContext('2d');
         ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.strokeStyle = brushColour
         ctx.stroke();
     };
 
@@ -47,6 +48,7 @@ const DrawingBoard = ({ width = 500, height = 500 }) => {
     return (
         <div>
             <canvas
+                className='Canvas'
                 ref={canvasRef}
                 width={width}
                 height={height}
