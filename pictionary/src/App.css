@@ -61,3 +61,10 @@
   align-items: center;
   gap: 30px;
 }
+
+.DrawingBoard {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

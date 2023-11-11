@@ -14,7 +14,9 @@ function App() {
     <div className="App">
       <div className='DrawingBoardAndBrushSizes'>
         <div className='Spacing'/>
-        <DrawingBoard width={600} height={400} brushColour={brushColour} brushSize={brushSize}/>
+        <div className="DrawingBoard">
+          <DrawingBoard width={600} height={400} brushColour={brushColour} brushSize={brushSize}/>
+        </div>
         <div className='BrushCircles'>
           {Object.keys(allBrushSizes).map((size) => {
             return <BrushCircle size={size} currentBrushSize={brushSize} changeBrushSize={setBrushSize}/>
